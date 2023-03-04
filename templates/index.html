@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Polynomial Plotter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <h1>Polynomial Plotter</h1>
+        <form method="post" action="{{ url_for('home') }}">
+            <p>
+                <label for="a">coef0:</label>
+                <input type="text" id="a_name" name="a_name" value="{{ default_coeffs['a']['name'] }}">
+                <input type="number" id="a" name="a" value="{{ default_coeffs['a']['val'] }}" step="any">
+            </p>
+            <p>
+                <label for="b">coef1:</label>
+                <input type="text" id="b_name" name="b_name" value="{{ default_coeffs['b']['name'] }}">
+                <input type="number" id="b" name="b" value="{{ default_coeffs['b']['val'] }}" step="any">
+            </p>
+            <p>
+                <label for="c">coef2:</label>
+                <input type="text" id="c_name" name="c_name" value="{{ default_coeffs['c']['name'] }}">
+                <input type="number" id="c" name="c" value="{{ default_coeffs['c']['val'] }}" step="any">
+            </p>
+            <p>
+                <label for="d">coef3:</label>
+                <input type="text" id="d_name" name="d_name" value="{{ default_coeffs['d']['name'] }}">
+                <input type="number" id="d" name="d" value="{{ default_coeffs['d']['val'] }}" step="any">
+            </p>
+            <p>
+                <input type="submit" value="Plot">
+                {# on button click #}
+                {#                <button type="submit" onclick="reset()">Reset</button>#}
+            <form action="{{ url_for('reset') }}" method="POST">
+                <button type="submit" onclick="reset()" class="reset-button">Reset</button>
+            </form>
+
+            </p>
+        </form>
+    </div>
+
+    <div class="box">
+        <h1>Polynomial Function</h1>
+        <p>\({{ f_x }}\)</p>
+        <img src="data:image/png;base64,{{ image_data }}">
+    </div>
+</div>
+
+</script>
+</body>
+
+</html>
+
