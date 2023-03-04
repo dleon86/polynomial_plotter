@@ -1,3 +1,5 @@
+![Screenshot of app](images/Screenshot 2023-03-04 025728.png "screen shot 1")
+
 # Polynomial Plotter
 
 This is a simple Flask app that plots a polynomial with coefficients a, b, c, and d. The user can input their own 
